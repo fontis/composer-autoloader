@@ -1,0 +1,3 @@
+src/app/code/community/Fontis/ComposerAutoloader        app/code/community/Fontis/ComposerAutoloader
+src/app/etc/modules/Fontis_ComposerAutoloader.xml       app/etc/modules/Fontis_ComposerAutoloader.xml
+src/app/etc/fontis_composerautoloader.xml               app/etc/fontis_composerautoloader.xml

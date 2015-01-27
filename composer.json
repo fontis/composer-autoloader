@@ -1,0 +1,16 @@
+{
+    "name": "fontis/composer-autoloader",
+    "type": "magento-module",
+    "license": "OSL-3.0",
+    "description": "Easily add the Composer autoloader to Magento.",
+    "homepage": "http://www.fontis.com.au",
+    "authors": [
+        {
+            "name":"Fontis",
+            "email":"magento@fontis.com.au"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
