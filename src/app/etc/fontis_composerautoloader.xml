@@ -21,6 +21,29 @@
         <composer_autoloader>
             <path>{{libdir}}/fontis/vendor</path>
         </composer_autoloader>
+
+        <helpers>
+            <fontis_composerautoloader>
+                <class>Fontis_ComposerAutoloader_Helper</class>
+            </fontis_composerautoloader>
+        </helpers>
+        <models>
+            <fontis_composerautoloader>
+                <class>Fontis_ComposerAutoloader_Model</class>
+            </fontis_composerautoloader>
+        </models>
+
+        <events>
+            <resource_get_tablename>
+                <observers>
+                    <fontis_composer_autoloader>
+                        <type>singleton</type>
+                        <class>fontis_composerautoloader/observer</class>
+                        <method>addComposerAutoloader</method>
+                    </fontis_composer_autoloader>
+                </observers>
+            </resource_get_tablename>
+        </events>
     </global>
 </config>
 

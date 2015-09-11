@@ -19,39 +19,7 @@
 <config>
     <modules>
         <Fontis_ComposerAutoloader>
-            <version>1.0.0</version>
+            <version>2.0.3</version>
         </Fontis_ComposerAutoloader>
     </modules>
-    <global>
-        <helpers>
-            <fontis_composerautoloader>
-                <class>Fontis_ComposerAutoloader_Helper</class>
-            </fontis_composerautoloader>
-        </helpers>
-        <models>
-            <fontis_composerautoloader>
-                <class>Fontis_ComposerAutoloader_Model</class>
-            </fontis_composerautoloader>
-        </models>
-        <events>
-            <controller_front_init_before>
-                <observers>
-                    <fontis_composer_autoloader>
-                        <type>singleton</type>
-                        <class>fontis_composerautoloader/observer</class>
-                        <method>addComposerAutoloader</method>
-                    </fontis_composer_autoloader>
-                </observers>
-            </controller_front_init_before>
-            <add_new_autoloader>
-                <observers>
-                    <fontis_composer_autoloader>
-                        <type>singleton</type>
-                        <class>fontis_composerautoloader/observer</class>
-                        <method>addComposerAutoloader</method>
-                    </fontis_composer_autoloader>
-                </observers>
-            </add_new_autoloader>
-        </events>
-    </global>
 </config>

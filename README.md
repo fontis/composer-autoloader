@@ -21,7 +21,7 @@ Installation
    "require" section:
 
     ```
-    "fontis/composer-autoloader": "1.0.*"
+    "fontis/composer-autoloader": "2.0.*"
     ```
 
 2. Edit `app/etc/local.xml` and add the following XML. Modify the path to suit
@@ -37,25 +37,20 @@ Installation
    etc. The special values `{{basedir}}` and `{{libdir}}` will be replaced with
    the paths for the Magento base directory and the lib directory, respectively.
 
-Known Issues
-------------
-
-* Does not work for scripts which call `Mage::app()` directly as the same
-  events do not fire as for a frontend request. To get this working, you need
-  to fire an event following the call to `Mage::app()` like so:
-
-    ```
-    Mage::app();
-    Mage::dispatchEvent('add_new_autoloader');
-    ```
-
 Notes
 -----
 
-This extension makes use of the `controller_front_init_before` event dispatched
-by Magento early in the bootstrap process to load the Composer autoloader (in
-the `vendor/autoload.php` file).
+This extension makes use of the `resource_get_tablename` event, which is the
+very first event dispatched by Magento during the bootstrap process. The only
+place you can have event configuration for this event is in an XML file in
+app/etc, which is how this module works.
 
-Other events were investigated, notably `resource_get_tablename`, but these
-are fired too early in the Magento startup for the event configuration to even
-be loaded, thus meaning that the autoloader observer is never called.
+In order to make this work in command line scripts, we also put a file in
+app/code/community that overrides Varien_Profiler. This file just requires the
+original version, then loads the global event configuration. This is necessary
+because of the differences in bootstrapping Magento manually from the command
+line versus how Magento does it for web requests.
+
+This is an improvement over v1 of this extension, where you had to manually
+dispatch an event after bootstrapping Magento to ensure the composer autoloader
+was required.
