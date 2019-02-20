@@ -21,7 +21,7 @@ Installation
    "require" section:
 
     ```
-    "fontis/composer-autoloader": "2.0.*"
+    "fontis/composer-autoloader": "2.1.*"
     ```
 
 2. Edit `app/etc/local.xml` and add the following XML. Modify the path to suit
@@ -53,4 +53,4 @@ line versus how Magento does it for web requests.
 
 This is an improvement over v1 of this extension, where you had to manually
 dispatch an event after bootstrapping Magento to ensure the composer autoloader
-was required.
+was required in command-line scripts.
